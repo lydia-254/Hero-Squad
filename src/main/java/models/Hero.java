@@ -40,3 +40,15 @@ public class Hero {
         return age;
     }
 //
+public static ArrayList<Hero>getAll(){
+    return instances;
+}
+    public static void clearAllHeros(){
+        instances.clear();
+    }
+    public void setId( int id){
+        this.id = id;
+    }
+    public static Hero findById(int id){
+        return instances.get(id-1);
+    }
