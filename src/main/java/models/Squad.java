@@ -29,3 +29,16 @@ public class Squad {
         this.maxNum=maxNum;
         squads.add(this);
     }
+    public String getSquadName(){
+        return squadName;
+    }
+    public String getCause(){
+        return cause;
+    }
+    public int getMaxNum(){
+        return maxNum;
+    }
+    public static ArrayList<Squad>getAll(){
+        return squads;
+    }
+}
