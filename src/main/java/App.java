@@ -74,3 +74,35 @@ public class App {
             editHero.update(newName,newAge,newPower,newWeakness);
             return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
+        //get: delete an individual hero
+        get("/heros/:id/delete" ,(request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            int idOfHeroToDelete = Integer.parseInt(request.params("id"));
+            Hero deleteHero = Hero.findById(idOfHeroToDelete);
+            deleteHero.deleteById(idOfHeroToDelete);
+            return new ModelAndView(model,"success.hbs");
+        },new HandlebarsTemplateEngine());
+        //squad
+        //get to show new squad form
+        get("/squads/list",(request, response) -> {
+            Map<String,Object> model = new HashMap<>();
+            return new ModelAndView(model,"squad-form.hbs");
+        },new HandlebarsTemplateEngine());
+        //task: process new squad form
+        post ("/squads/list",(request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            String squadName =request.queryParams("squadName");
+            int squadNumber = Integer.parseInt(request.queryParams("squadNumber"));
+            String squadCause= request.queryParams("squadCause");
+            Squad newSquadIdentity =new Squad(squadName,squadNumber,squadCause);
+            model.put("squad",newSquadIdentity );
+            return new ModelAndView(model,"success2.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/squads/list/:id",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            ArrayList<Squad> squads = Squad.getAll();
+            model.put("squads", squads);
+            return new ModelAndView(model, "squad-list.hbs");
+        },new HandlebarsTemplateEngine());
+    }
+}
