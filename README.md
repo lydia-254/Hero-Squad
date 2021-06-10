@@ -1,6 +1,6 @@
 # Hero-Squad
 ## Author
-Lydia wangare
+Kang'eri Lydia
 ## Description
 This is like a game for the Hero that gives you an opportunity to choose and create your hero to represent you and give him the strength and weakness that he might have 
 ## setup and installation
