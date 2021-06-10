@@ -53,3 +53,24 @@ public class App {
             model.put("hero",foundHero);
             return new ModelAndView(model,"hero-detail.hbs");
         }, new HandlebarsTemplateEngine());
+//        get show a form to update hero
+        get("/heros/:id/update",(request, response) -> {
+            Map <String,Object>model = new HashMap<>();
+            int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
+            Hero editHero = Hero.findById(idOfTheHeroToEdit);
+            model.put("editHero",editHero);
+            return new ModelAndView(model,"hero-form.hbs");
+        },new HandlebarsTemplateEngine());
+//
+        //task:process a form to update a hero
+        post("/heros/:id/update",(request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            String newName = request.queryParams("name");
+            int newAge =Integer.parseInt(request.queryParams("age"));
+            String newPower = request.queryParams("power");
+            String newWeakness = request.queryParams("weakness");
+            int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
+            Hero editHero = Hero.findById(idOfTheHeroToEdit);
+            editHero.update(newName,newAge,newPower,newWeakness);
+            return new ModelAndView(model,"success.hbs");
+        },new HandlebarsTemplateEngine());
