@@ -15,3 +15,23 @@ public class App {
         } else {
             port = 4567;
         }
+        port(port);
+        staticFileLocation("/public");
+        //get to show new hero form
+        get("/heros/new",(request, response) ->  {
+            Map<String,Object> model = new HashMap<>();
+            return new ModelAndView(model,"hero-form.hbs");
+        },new HandlebarsTemplateEngine());
+//
+        //task: process new hero form
+        post ("/heros/new",(request, response) -> {
+            Map<String,Object>model = new HashMap<String, Object>();
+            String name =request.queryParams("name");
+            int age = Integer.parseInt(request.queryParams("age"));
+            String power= request.queryParams("power");
+            String weakness = request.queryParams("weakness");
+            Hero newIdentity =new Hero(name,age,power,weakness);
+            model.put("hero",newIdentity);
+            return new ModelAndView(model,"success.hbs");
+        }, new HandlebarsTemplateEngine());
+//
