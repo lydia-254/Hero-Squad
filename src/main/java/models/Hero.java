@@ -52,3 +52,22 @@ public static ArrayList<Hero>getAll(){
     public static Hero findById(int id){
         return instances.get(id-1);
     }
+    public void update(String name, int age,String power,String weakness){
+        this.name =name;
+        this.age=age;
+        this.power= power;
+        this.weakness=weakness;
+    }
+    public void deleteById(int id){
+        instances.remove(id-1);
+    }
+    public String getPower(){
+        return power;
+    };
+    public String getWeakness(){
+        return weakness;
+    }
+    public int getId(){
+        return id;
+    }
+}
