@@ -15,7 +15,7 @@ dependencies {
     implementation "com.sparkjava:spark-template-handlebars:2.5.5"
     implementation 'org.slf4j:slf4j-simple:1.7.21'
 }
-applicationName = 'herojeremy'
-archivesBaseName = "herojeremy"
+applicationName = 'herolydia'
+archivesBaseName = "herolydia"
 defaultTasks = ['clean']
-task stage(dependsOn: ['clean', 'installDist'])eg
+task stage(dependsOn: ['clean', 'installApp'])

@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a5fd6bc4-2bec-4508-baba-66efefa7f3dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Templates/layout.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Templates/layout.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Templates/squaddetail.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Templates/squaddetail.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Templates/squadform.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Templates/squadform.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Templates/success.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Templates/success.hbs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
