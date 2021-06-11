@@ -28,9 +28,9 @@ public class App {
             Map<String,Object>model = new HashMap<String, Object>();
             String name =request.queryParams("name");
             int age = Integer.parseInt(request.queryParams("age"));
-            String power= request.queryParams("power");
+            String strength= request.queryParams("strength");
             String weakness = request.queryParams("weakness");
-            Hero newIdentity =new Hero(name,age,power,weakness);
+            Hero newIdentity =new Hero(name,age,strength,weakness);
             model.put("hero",newIdentity);
             return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
@@ -67,11 +67,11 @@ public class App {
             Map<String,Object>model = new HashMap<>();
             String newName = request.queryParams("name");
             int newAge =Integer.parseInt(request.queryParams("age"));
-            String newPower = request.queryParams("power");
+            String newStrength = request.queryParams("strength");
             String newWeakness = request.queryParams("weakness");
             int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
             Hero editHero = Hero.findById(idOfTheHeroToEdit);
-            editHero.update(newName,newAge,newPower,newWeakness);
+            editHero.update(newName,newAge,newStrength,newWeakness);
             return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
         //get: delete an individual hero

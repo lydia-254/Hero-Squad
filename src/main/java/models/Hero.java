@@ -10,16 +10,16 @@ public class Hero {
         return age == hero.age &&
                 id == hero.id &&
                 Objects.equals(name, hero.name) &&
-                Objects.equals(power, hero.power) &&
+                Objects.equals(strength, hero.strength) &&
                 Objects.equals(weakness, hero.weakness);
    }//
     @Override
     public int hashCode() {
-        return Objects.hash(name, age, power, weakness, id);
+        return Objects.hash(name, age, strength, weakness, id);
     }
     private String name;
     private int age;
-    private String power;
+    private String strength;
     private String weakness;
     private int id;
     private static ArrayList<Hero> instances = new ArrayList<>();
@@ -29,7 +29,7 @@ public class Hero {
     public Hero(String name, int age, String power, String weakness){
         this.name=name;
         this.age =age;
-        this.power=power;
+        this.strength= strength ;
         this.weakness=weakness;
         instances.add(this);
     }
@@ -55,14 +55,14 @@ public static ArrayList<Hero>getAll(){
     public void update(String name, int age,String power,String weakness){
         this.name =name;
         this.age=age;
-        this.power= power;
+        this.strength= strength;
         this.weakness=weakness;
     }
     public void deleteById(int id){
         instances.remove(id-1);
     }
-    public String getPower(){
-        return power;
+    public String getSrength(){
+        return strength;
     };
     public String getWeakness(){
         return weakness;
