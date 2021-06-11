@@ -26,7 +26,7 @@ public class Hero {
 //
 //
 
-    public Hero(String name, int age, String power, String weakness){
+    public Hero(String name, int age, String strength, String weakness){
         this.name=name;
         this.age =age;
         this.strength= strength ;
@@ -52,7 +52,7 @@ public static ArrayList<Hero>getAll(){
     public static Hero findById(int id){
         return instances.get(id-1);
     }
-    public void update(String name, int age,String power,String weakness){
+    public void update(String name, int age,String strength,String weakness){
         this.name =name;
         this.age=age;
         this.strength= strength;
@@ -61,13 +61,14 @@ public static ArrayList<Hero>getAll(){
     public void deleteById(int id){
         instances.remove(id-1);
     }
-    public String getSrength(){
-        return strength;
-    };
-    public String getWeakness(){
-        return weakness;
-    }
-    public int getId(){
-        return id;
-    }
 }
+//    public String getSrength(){
+//        return strength;
+//    };
+//    public String getWeakness()
+//        return weakness;
+//    }
+//    public int getId(){
+//        return id;
+//    }
+//}
