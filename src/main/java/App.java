@@ -14,13 +14,13 @@ public class App {
             port = Integer.parseInt(process.environment().get("PORT"));
         } else {
             port = 4567;
-        }
+       }
         port(port);
         staticFileLocation("/public");
         //get to show new hero form
         get("/heros/new",(request, response) ->  {
             Map<String,Object> model = new HashMap<>();
-            return new ModelAndView(model,"hero-form.hbs");
+            return new ModelAndView(model,"heroform.hbs");
         },new HandlebarsTemplateEngine());
 //
         //task: process new hero form
@@ -51,7 +51,7 @@ public class App {
             int idOfHeroToFind = Integer.parseInt(request.params(":id"));
             Hero foundHero= Hero.findById(idOfHeroToFind);
             model.put("hero",foundHero);
-            return new ModelAndView(model,"hero-detail.hbs");
+            return new ModelAndView(model,"herodetail.hbs");
         }, new HandlebarsTemplateEngine());
 //        get show a form to update hero
         get("/heros/:id/update",(request, response) -> {
@@ -59,7 +59,7 @@ public class App {
             int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
             Hero editHero = Hero.findById(idOfTheHeroToEdit);
             model.put("editHero",editHero);
-            return new ModelAndView(model,"hero-form.hbs");
+            return new ModelAndView(model,"heroform.hbs");
         },new HandlebarsTemplateEngine());
 //
         //task:process a form to update a hero
@@ -86,7 +86,7 @@ public class App {
         //get to show new squad form
         get("/squads/list",(request, response) -> {
             Map<String,Object> model = new HashMap<>();
-            return new ModelAndView(model,"squad-form.hbs");
+            return new ModelAndView(model,"squadform.hbs");
         },new HandlebarsTemplateEngine());
         //task: process new squad form
         post ("/squads/list",(request, response) -> {
@@ -96,13 +96,13 @@ public class App {
             String squadCause= request.queryParams("squadCause");
             Squad newSquadIdentity =new Squad(squadName,squadNumber,squadCause);
             model.put("squad",newSquadIdentity );
-            return new ModelAndView(model,"success2.hbs");
+            return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
         get("/squads/list/:id",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<Squad> squads = Squad.getAll();
             model.put("squads", squads);
-            return new ModelAndView(model, "squad-list.hbs");
+            return new ModelAndView(model, "squadlist.hbs");
         },new HandlebarsTemplateEngine());
     }
 }
