@@ -18,13 +18,13 @@ public class App {
         port(port);
         staticFileLocation("/public");
         //get to show new hero form
-        get("/heros/new",(request, response) ->  {
+        get("/heroes/new",(request, response) ->  {
             Map<String,Object> model = new HashMap<>();
             return new ModelAndView(model,"heroform.hbs");
         },new HandlebarsTemplateEngine());
 //
         //task: process new hero form
-        post ("/heros/new",(request, response) -> {
+        post ("/heroes/new",(request, response) -> {
             Map<String,Object>model = new HashMap<String, Object>();
             String name =request.queryParams("name");
             int age = Integer.parseInt(request.queryParams("age"));
@@ -38,15 +38,15 @@ public class App {
         //get to show all heros
         get("/",(request, response) -> {
             Map<String,Object> model = new HashMap<String, Object>();
-            ArrayList<Hero> heros = Hero.getAll();
+            ArrayList<Hero> heroes = Hero.getAll();
             ArrayList<Squad>squads =Squad.getAll();
-            model.put("heros",heros);
+            model.put("heroes",heroes);
 //            model.put("squads",squads);
             return new ModelAndView(model,"index.hbs");
         }, new HandlebarsTemplateEngine());
 //
         //show an individual hero
-        get("/heros/:id",(request, response) -> {
+        get("/heroes/:id",(request, response) -> {
             Map<String,Object>model = new HashMap<String, Object>();
             int idOfHeroToFind = Integer.parseInt(request.params(":id"));
             Hero foundHero= Hero.findById(idOfHeroToFind);
@@ -54,7 +54,7 @@ public class App {
             return new ModelAndView(model,"herodetail.hbs");
         }, new HandlebarsTemplateEngine());
 //        get show a form to update hero
-        get("/heros/:id/update",(request, response) -> {
+        get("/heroes/:id/update",(request, response) -> {
             Map <String,Object>model = new HashMap<>();
             int idOfTheHeroToEdit =Integer.parseInt(request.params("id"));
             Hero editHero = Hero.findById(idOfTheHeroToEdit);
@@ -63,7 +63,7 @@ public class App {
         },new HandlebarsTemplateEngine());
 //
         //task:process a form to update a hero
-        post("/heros/:id/update",(request, response) -> {
+        post("/heroes/:id/update",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             String newName = request.queryParams("name");
             int newAge =Integer.parseInt(request.queryParams("age"));
@@ -75,7 +75,7 @@ public class App {
             return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
         //get: delete an individual hero
-        get("/heros/:id/delete" ,(request, response) -> {
+        get("/heroes/:id/delete" ,(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             int idOfHeroToDelete = Integer.parseInt(request.params("id"));
             Hero deleteHero = Hero.findById(idOfHeroToDelete);

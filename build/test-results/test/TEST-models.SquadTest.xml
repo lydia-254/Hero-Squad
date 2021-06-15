@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="models.SquadTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-15T09:30:41" hostname="moringa-hp-probook-650-g5" time="0.003">
+  <properties/>
+  <testcase name="AllHeroesContainsAllHeroes_true" classname="models.SquadTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
