@@ -18,5 +18,8 @@ Java
 html
 css
 
+## Live site
+Check it out here ( https://lydiaheroes.herokuapp.com/) to view the project.
+
 ### LICENCE
 This project is under THE [MIT] (LICENCE
