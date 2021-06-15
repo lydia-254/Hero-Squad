@@ -7,15 +7,18 @@ import java.util.HashMap;
 import java.util.Map;
 import static spark.Spark.*;
 public class App {
-    public static void main(String[] args) {
-        ProcessBuilder process = new ProcessBuilder();
-        Integer port;
-        if (process.environment().get("PORT") != null) {
-            port = Integer.parseInt(process.environment().get("PORT"));
-        } else {
-            port = 4567;
-       }
-        port(port);
+
+        static int getHerokuAssignedPort() {
+            ProcessBuilder processBuilder = new ProcessBuilder();
+            if (processBuilder.environment().get("PORT") != null) {
+                return Integer.parseInt(processBuilder.environment().get("PORT"));
+            }
+            return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+        }
+        public static void main(String[] args) {
+
+            port(getHerokuAssignedPort());
+            staticFileLocation("/public");
         staticFileLocation("/public");
         //get to show new hero form
         get("/heroes/new",(request, response) ->  {
@@ -35,7 +38,7 @@ public class App {
             return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
 //
-        //get to show all heros
+        //get to show all heroes
         get("/",(request, response) -> {
             Map<String,Object> model = new HashMap<String, Object>();
             ArrayList<Hero> heroes = Hero.getAll();
@@ -82,8 +85,20 @@ public class App {
             deleteHero.deleteById(idOfHeroToDelete);
             return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
-        //squad
-        //get to show new squad form
+
+        get("/squads",(request, response) -> {
+                        Map<String,Object> model = new HashMap<String, Object>();
+                        ArrayList<Squad>squads =Squad.getAll();
+                        model.put("squads",squads);
+                        return new ModelAndView(model,"squadlist.hbs");
+                    }, new HandlebarsTemplateEngine());
+
+
+
+        get("/squads/new",(request, response) ->  {
+            Map<String,Object> model = new HashMap<>();
+            return new ModelAndView(model,"squadform.hbs");
+        },new HandlebarsTemplateEngine());
         get("/squads/list",(request, response) -> {
             Map<String,Object> model = new HashMap<>();
             return new ModelAndView(model,"squadform.hbs");
@@ -96,7 +111,7 @@ public class App {
             String squadCause= request.queryParams("squadCause");
             Squad newSquadIdentity =new Squad(squadName,squadNumber,squadCause);
             model.put("squad",newSquadIdentity );
-            return new ModelAndView(model,"success.hbs");
+            return new ModelAndView(model,"squadsuccess.hbs");
         }, new HandlebarsTemplateEngine());
         get("/squads/list/:id",(request, response) -> {
             Map<String, Object> model = new HashMap<>();

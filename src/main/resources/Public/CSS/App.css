@@ -1,6 +1,23 @@
-body {
+body{
+    background: rgba(238, 231, 231, 0.849) url("../images/back.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+ }
+  ul,li{
+    list-style: none;
+    text-align: center;
+    display: inline-block;
+ }
+ li, a{
+     font-size: 25px;
+     font-family: 'Viaoda Libre', cursive;
+ }
+/* body {
     background: rgb(0,0,0) url("../Image/back.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
+} */

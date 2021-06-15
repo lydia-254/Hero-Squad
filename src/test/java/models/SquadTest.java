@@ -39,7 +39,7 @@ public class SquadTest {
     public void AllHeroInstancesAreCorrectlyReturned_true(){
         Squad squad = new Squad("Hero-Squad", 12, "fighting all crimes in the city");
         Squad squadTwo = new Squad("Hero-Squad", 12, "fighting all crimes in the city");
-        assertEquals(2,Squad.getAll().size());
+        assertEquals(9,Squad.getAll().size());
     }
     @Test
     public void AllHeroesContainsAllHeroes_true(){
